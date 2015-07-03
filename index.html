@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+    <title>BubbleShooter</title>
+    <link href="css/main.css" rel="stylesheet" />
+    <link href="css/game.css" rel="stylesheet" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+    <script src="js/modernizr.js"></script>
+    <script src="js/game.js"></script>
+    <script>
+    //modernizr allows us to load each appropriate file depending on if the browser supports it or not.
+    Modernizr.load([{
+             load: '//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js',
+             complete: function () {
+                if (!window.jQuery) {
+                    Modernizr.load('js/jquery-1.11.3.min.js');
+                    }
+                },
+            },
+            "js/main.js",
+            "js/ui.js",
+            "js/bubble.js",
+            "js/board.js",
+             "js/collision-detection.js",
+             "js/jquery.kaboom.js",
+             "js/renderer.js",
+             "js/sprite.js",
+             "js/sounds.js",
+            {
+              load: "js/game.js",
+              complete: function (){
+                $(function(){
+                    var game = new BubbleShoot.Game();
+                    game.init();
+                })
+              }
+            }]);
+    </script>
+</head> 
+<body>
+    <!-- we will run our entire game inside of this page-->
+        <div id="page">
+            <div id="top_bar">
+                <div id="top_level_box" class="top_bar_box">
+                    <div id="top_level_label">Level:</div>
+                    <div id="level">1</div>
+                </div> 
+                <div class="top_bar_box">
+                    <div id="top_score_label">Score</div>
+                    <div id="score">0</div>
+                </div> 
+                <div class="top_bar_box">
+                    <div id="top_score_label">High Score</div>
+                    <div id="high_score">0</div>
+                </div>     
+            </div>
+            <div id="game">
+                <canvas id="game_canvas" width="1000" height="620"></canvas>
+                <div id="board"></div>
+                <div id="bubbles_remaining"></div>
+            </div>
+            <div id="feedback"></div>
+            <div id="instructions"></div>
+            <div id="footer_bar"></div>
+            <div id="start_game" class="dialog">
+                <div id="start_game_message">
+                    <h2>Welcome To BubbleShooter!</h3>
+                    <h3>Start a New Game</h3>
+                </div>
+                <div class="but_start_game button" id="start">
+                    New Game
+                </div>
+            </div>
+            <!--messages showing the results of the game played-->
+            <div id="end_game" class="dialog">
+                <div id="end_game_message">
+                    <h2>Game Over</h2>
+                    <div id="final_score">
+                        <span>Final Score:</span>
+                        <span id="final_score_value"></span>
+                    </div>
+                    <div id="new_high_score">New High Score!</div>
+                    <div id="level_failed" class="level_failed">Level Failed!</div>
+                    <div id="level_complete" class="level_complete">Level Completed!</div>
+                </div>
+                <div class="but_start_game button">
+                    <span class="level_complete">Next Level</span>
+                    <span class="level_failed">New Game</span>
+                </div>
+            </div>
+        </div>
+</body>
+</html>
