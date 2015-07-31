@@ -46,7 +46,7 @@ BubbleShoot.ui = (function($){
             $("#end_game").fadeIn(500);
             $("#final_score_value").text(score);
         },
-        //the previous three functions show the score, highscore, and level in the upper bar.
+        //the next three functions show the score, highscore, and level in the upper bar.
         drawScore: function (score){
             $("#score").text(score);
         },
